@@ -6,6 +6,8 @@ type CheckMeResponse {
 
 type Query {
   CheckMe: CheckMeResponse!
+  ListBills(cursor: ID, user_id: ID, title: String, hall: String): ListBillsResponse!
+  ReadBill(id: ID!): ReadBillResponse!
   ViewCart: ViewCartResponse!
   ListItems(cursor: ID, name: String, divide: String, native: String): ListItemsResponse!
   ReadItem(id: ID!): ReadItemResponse!
@@ -21,6 +23,11 @@ type Mutation {
   Login(username: String!, password: String!): LoginResponse!
   Password(password: String!): PasswordResponse!
   Register(username: String!, password: String!): RegisterResponse!
+  AddBill(title: String!, hall: String!, etc: String!): AddBillResponse!
+  AddReserve(bill_id: ID!, reserve: Int!): AddReserveResponse!
+  RemoveBill(id: ID!): RemoveBillResponse!
+  RemoveReserve(bill_id: ID!): RemoveReserveResponse!
+  RestoreBill(id: ID!): RestoreBillResponse!
   AddCart(item_id: ID!, count: Int!, price: Int!): AddCartResponse!
   RemoveCart: RemoveCartResponse!
   RemoveCartItem(item_id: ID!): RemoveCartItemResponse!
@@ -35,6 +42,43 @@ type PasswordResponse {
 }
 
 type RegisterResponse {
+  ok: Boolean!
+  error: String
+}
+
+type AddBillResponse {
+  ok: Boolean!
+  error: String
+}
+
+type AddReserveResponse {
+  ok: Boolean!
+  error: String
+}
+
+type ListBillsResponse {
+  ok: Boolean!
+  error: String
+  bills: [Bill]
+}
+
+type ReadBillResponse {
+  ok: Boolean!
+  error: String
+  bill: Bill
+}
+
+type RemoveBillResponse {
+  ok: Boolean!
+  error: String
+}
+
+type RemoveReserveResponse {
+  ok: Boolean!
+  error: String
+}
+
+type RestoreBillResponse {
   ok: Boolean!
   error: String
 }
