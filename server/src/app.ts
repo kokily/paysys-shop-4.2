@@ -1,4 +1,4 @@
-import { ApolloServer, gql } from 'apollo-server-koa';
+import { ApolloServer } from 'apollo-server-koa';
 import Koa, { Context } from 'koa';
 import Router from 'koa-router';
 import cors from '@koa/cors';
