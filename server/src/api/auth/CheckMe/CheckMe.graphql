@@ -1,0 +1,9 @@
+type CheckMeResponse {
+  ok: Boolean!
+  error: String
+  me: MeType
+}
+
+type Query {
+  CheckMe: CheckMeResponse!
+}

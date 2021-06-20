@@ -9,7 +9,7 @@ const allTypes: GraphQLSchema[] = fileLoader(
 );
 
 const allResolvers: IResolvers[] = fileLoader(
-  path.resolve(__dirname, './api/**/*.resolvers.*')
+  path.resolve(__dirname, './../api/**/*.resolvers.*')
 );
 
 const typeDefs = mergeTypes(allTypes);

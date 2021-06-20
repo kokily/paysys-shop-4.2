@@ -7,6 +7,7 @@ import serve from 'koa-static';
 import send from 'koa-send';
 import path from 'path';
 import upload from './libs/upload';
+import schema from './libs/schema';
 
 const { default: enforceHttps } = require('koa-sslify');
 
@@ -47,21 +48,13 @@ app.use(async (ctx: Context) => {
   }
 });
 
-const typeDefs = gql`
-  type Query {
-    hello: String!
-  }
-`;
-
-const resolvers = {
-  Query: {
-    hello: () => 'Hello World',
-  },
-};
-
 const apollo = new ApolloServer({
-  typeDefs,
-  resolvers,
+  schema,
+  context: ({ ctx }: { ctx: Context }) => {
+    return {
+      ctx,
+    };
+  },
 });
 
 router.get('/graphql', apollo.getMiddleware());
