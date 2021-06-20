@@ -11,6 +11,8 @@ type Query {
   ViewCart: ViewCartResponse!
   ListItems(cursor: ID, name: String, divide: String, native: String): ListItemsResponse!
   ReadItem(id: ID!): ReadItemResponse!
+  ListUsers(username: String, cursor: ID): ListUsersResponse!
+  ReadUser(id: ID!): ReadUserResponse!
 }
 
 type LoginResponse {
@@ -34,6 +36,10 @@ type Mutation {
   AddItem(name: String!, divide: String!, native: String!, unit: String!, price: Int!): AddItemResponse!
   RemoveItem(id: ID!): RemoveItemResponse!
   UpdateItem(id: ID!, name: String, divide: String, native: String, unit: String, price: Int): UpdateItemResponse!
+  InitPassword(id: ID!): InitPasswordResponse!
+  RemoveUser(id: ID!): RemoveUserResponse!
+  SetAdmin(id: ID!): SetAdminResponse!
+  SetEmployee(id: ID!): SetEmployeeResponse!
 }
 
 type PasswordResponse {
@@ -325,4 +331,36 @@ type Reserve {
   reserve_pay: Int!
   weddingId: String
   wedding: Wedding
+}
+
+type InitPasswordResponse {
+  ok: Boolean!
+  error: String
+}
+
+type ListUsersResponse {
+  ok: Boolean!
+  error: String
+  users: [User]
+}
+
+type ReadUserResponse {
+  ok: Boolean!
+  error: String
+  user: User
+}
+
+type RemoveUserResponse {
+  ok: Boolean!
+  error: String
+}
+
+type SetAdminResponse {
+  ok: Boolean!
+  error: String
+}
+
+type SetEmployeeResponse {
+  ok: Boolean!
+  error: String
 }
