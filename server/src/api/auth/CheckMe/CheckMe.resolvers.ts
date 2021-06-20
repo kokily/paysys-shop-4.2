@@ -7,13 +7,13 @@ const resolvers: Resolvers = {
   Query: {
     CheckMe: authResolver(
       async (_, __, { ctx }: { ctx: Context }): Promise<CheckMeResponse> => {
-        const { userId, username, admin } = ctx.state.user;
+        const { user_id, username, admin } = ctx.state.user;
 
         return {
           ok: true,
           error: null,
           me: {
-            userId,
+            user_id,
             username,
             admin,
           },

@@ -5,7 +5,7 @@ import { User } from '../entities/User';
 
 async function decodeToken(token: string): Promise<User | undefined> {
   const decoded: any = jwt.verify(token, process.env.JWT_SECRET!);
-  const user = await getRepository(User).findOne({ id: decoded.userId });
+  const user = await getRepository(User).findOne({ id: decoded.user_id });
 
   if (user) {
     return user;
@@ -28,7 +28,7 @@ export const adminResolver =
 
       if (user && user.admin) {
         ctx.state.user = {
-          userId: user.id,
+          user_id: user.id,
           username: user.username,
           admin: user.admin,
         };
@@ -57,7 +57,7 @@ export const authResolver = (resolverFunction) => async (parent, args, context, 
 
     if (user) {
       ctx.state.user = {
-        userId: user.id,
+        user_id: user.id,
         username: user.username,
         admin: user.admin,
       };

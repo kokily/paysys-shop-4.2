@@ -1,0 +1,10 @@
+type RemoveCartItemResponse {
+  ok: Boolean!
+  error: String
+}
+
+type Mutation {
+  RemoveCartItem(
+    item_id: ID!
+  ): RemoveCartItemResponse!
+}

@@ -6,6 +6,7 @@ type CheckMeResponse {
 
 type Query {
   CheckMe: CheckMeResponse!
+  ViewCart: ViewCartResponse!
   ListItems(cursor: ID, name: String, divide: String, native: String): ListItemsResponse!
   ReadItem(id: ID!): ReadItemResponse!
 }
@@ -20,6 +21,9 @@ type Mutation {
   Login(username: String!, password: String!): LoginResponse!
   Password(password: String!): PasswordResponse!
   Register(username: String!, password: String!): RegisterResponse!
+  AddCart(item_id: ID!, count: Int!, price: Int!): AddCartResponse!
+  RemoveCart: RemoveCartResponse!
+  RemoveCartItem(item_id: ID!): RemoveCartItemResponse!
   AddItem(name: String!, divide: String!, native: String!, unit: String!, price: Int!): AddItemResponse!
   RemoveItem(id: ID!): RemoveItemResponse!
   UpdateItem(id: ID!, name: String, divide: String, native: String, unit: String, price: Int): UpdateItemResponse!
@@ -33,6 +37,28 @@ type PasswordResponse {
 type RegisterResponse {
   ok: Boolean!
   error: String
+}
+
+type AddCartResponse {
+  ok: Boolean!
+  error: String
+  cart: Cart
+}
+
+type RemoveCartResponse {
+  ok: Boolean!
+  error: String
+}
+
+type RemoveCartItemResponse {
+  ok: Boolean!
+  error: String
+}
+
+type ViewCartResponse {
+  ok: Boolean!
+  error: String
+  cart: Cart
 }
 
 type AddItemResponse {
@@ -74,7 +100,7 @@ type User {
 }
 
 type MeType {
-  userId: ID!
+  user_id: ID!
   username: String!
   admin: Boolean!
 }
