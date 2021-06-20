@@ -6,6 +6,7 @@ import bodyParser from 'koa-body';
 import serve from 'koa-static';
 import send from 'koa-send';
 import path from 'path';
+import upload from './libs/upload';
 
 const { default: enforceHttps } = require('koa-sslify');
 
@@ -35,7 +36,11 @@ app.use(router.routes());
 app.use(router.allowedMethods());
 app.use(serve(rootDir));
 app.use(async (ctx: Context) => {
-  if (ctx.status === 404 && ctx.path.indexOf('/graphql') !== 0) {
+  if (
+    ctx.status === 404 &&
+    ctx.path.indexOf('/graphql') !== 0 &&
+    ctx.path.indexOf('/upload') !== 0
+  ) {
     await send(ctx, 'index.html', {
       root: rootDir,
     });
@@ -61,6 +66,7 @@ const apollo = new ApolloServer({
 
 router.get('/graphql', apollo.getMiddleware());
 router.post('/graphql', apollo.getMiddleware());
+router.use('/upload', upload.routes());
 
 apollo.applyMiddleware({ app, cors: false });
 
