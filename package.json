@@ -1,0 +1,19 @@
+{
+  "name": "paysys-shop",
+  "version": "1.0.0",
+  "main": "server.js",
+  "repository": "https://github.com/kokily/paysys-shop.git",
+  "author": "kokily <kokily@naver.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "concurrently": "6.2.0"
+  },
+  "scripts": {
+    "server": "cd server && yarn dev",
+    "client": "cd client && yarn start",
+    "dev": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\"",
+    "build:server": "cd server && yarn build",
+    "build:client": "cd client && yarn build",
+    "start": "cd server && yarn start"
+  }
+}
