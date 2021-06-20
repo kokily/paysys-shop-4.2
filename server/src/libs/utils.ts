@@ -16,7 +16,7 @@ export function maskingName(name: string): string {
   }
 }
 
-export function cleanAllNulls(args: object): object {
+export function cleanAllNullArgs(args: object): object {
   const notNull = {};
 
   Object.keys(args).forEach((key) => {
