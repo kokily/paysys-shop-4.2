@@ -9,13 +9,12 @@ function useNative() {
   const onMenu = (divide: string) => {
     let menu = '';
 
-    switch (menu) {
-      case 'soldier':
-        return (menu = '현역');
-      case 'reserve':
-        return (menu = '예비역');
-      case 'general':
-        return (menu = '일반');
+    if (native === 'soldier') {
+      menu = '현역';
+    } else if (native === 'reserve') {
+      menu = '예비역';
+    } else if (native === 'general') {
+      menu = '일반';
     }
 
     history.push(`/menu?native=${menu}&divide=${divide}`);
