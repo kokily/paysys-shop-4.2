@@ -35,7 +35,7 @@ const _bootStrap = async () => {
         console.log(`> Paysys server on https://${config.hostname}:${config.port}`);
       });
     } else {
-      httpServer = http.createServer(app.callback);
+      httpServer = http.createServer(app.callback());
 
       httpServer.listen(config.port, () => {
         console.log(`> Paysys dev server on http://${config.hostname}:${config.port}`);

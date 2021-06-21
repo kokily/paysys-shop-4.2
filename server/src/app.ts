@@ -24,15 +24,14 @@ app.use(
   })
 );
 
-if (process.env.NODE_ENV === 'production') {
+process.env.NODE_ENV === 'production' &&
   app.use(
     enforceHttps({
       port: 443,
     })
   );
-}
 
-app.use(bodyParser());
+app.use(bodyParser({ multipart: true }));
 app.use(router.routes());
 app.use(router.allowedMethods());
 app.use(serve(rootDir));
@@ -50,16 +49,12 @@ app.use(async (ctx: Context) => {
 
 const apollo = new ApolloServer({
   schema,
-  context: ({ ctx }: { ctx: Context }) => {
-    return {
-      ctx,
-    };
-  },
+  context: ({ ctx }: { ctx: Context }) => ({ ctx }),
 });
 
+router.use('/upload', upload.routes());
 router.get('/graphql', apollo.getMiddleware());
 router.post('/graphql', apollo.getMiddleware());
-router.use('/upload', upload.routes());
 
 apollo.applyMiddleware({ app, cors: false });
 

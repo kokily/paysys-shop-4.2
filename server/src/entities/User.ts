@@ -49,7 +49,7 @@ export class User extends BaseEntity {
 
   generateToken(): string {
     const token = {
-      userId: this.id,
+      user_id: this.id,
       username: this.username,
       admin: this.admin,
     };
