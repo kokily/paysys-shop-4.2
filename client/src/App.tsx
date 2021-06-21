@@ -7,6 +7,7 @@ import { isLogged } from './libs/store/graphql';
 
 const LoginPage = loadable(() => import('./pages/auth/LoginPage'));
 const RegisterPage = loadable(() => import('./pages/auth/RegisterPage'));
+const PasswordPage = loadable(() => import('./pages/auth/PasswordPage'));
 
 const LoginRoutes = ({ user }: { user: MeType | null }) => {
   if (!user) {
@@ -18,7 +19,7 @@ const LoginRoutes = ({ user }: { user: MeType | null }) => {
     <>
       {user && (
         <Switch>
-          LoginRoutes
+          <Route exact path="/password" component={PasswordPage} />
           {user && user.admin && <>AdminRoutes</>}
         </Switch>
       )}
