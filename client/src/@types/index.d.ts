@@ -1,7 +1,7 @@
 interface AuthState {
   username: string;
   password: string;
-  passwordConfirm?: string;
+  passwordConfirm: string;
 }
 
 interface AuthAction {

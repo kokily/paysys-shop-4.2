@@ -6,6 +6,7 @@ import { CHECK_ME } from './libs/graphql/auth';
 import { isLogged } from './libs/store/graphql';
 
 const LoginPage = loadable(() => import('./pages/auth/LoginPage'));
+const RegisterPage = loadable(() => import('./pages/auth/RegisterPage'));
 
 const LoginRoutes = ({ user }: { user: MeType | null }) => {
   if (!user) {
@@ -28,6 +29,7 @@ const LoginRoutes = ({ user }: { user: MeType | null }) => {
 const LogoutRoutes = () => (
   <Switch>
     <Route exact path="/" component={LoginPage} />
+    <Route path="/register" component={RegisterPage} />
     <Redirect from="*" to="/" />
   </Switch>
 );

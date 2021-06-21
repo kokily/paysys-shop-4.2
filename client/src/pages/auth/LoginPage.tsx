@@ -6,7 +6,7 @@ function LoginPage() {
   const { username, password, onChange, onLogin } = useAuth();
 
   return (
-    <AuthTemplate>
+    <AuthTemplate mode="login">
       <Login
         mode="login"
         username={username}
