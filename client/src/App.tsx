@@ -1,8 +1,11 @@
 import { useQuery } from '@apollo/client';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
+import loadable from '@loadable/component';
 import { CHECK_ME } from './libs/graphql/auth';
 import { isLogged } from './libs/store/graphql';
+
+const LoginPage = loadable(() => import('./pages/auth/LoginPage'));
 
 const LoginRoutes = ({ user }: { user: MeType | null }) => {
   if (!user) {
@@ -22,7 +25,12 @@ const LoginRoutes = ({ user }: { user: MeType | null }) => {
   );
 };
 
-const LogoutRoutes = () => <Switch>LogoutRoutes</Switch>;
+const LogoutRoutes = () => (
+  <Switch>
+    <Route exact path="/" component={LoginPage} />
+    <Redirect from="*" to="/" />
+  </Switch>
+);
 
 function App() {
   const { data, loading } = useQuery<{ CheckMe: { me: MeType } }>(CHECK_ME);

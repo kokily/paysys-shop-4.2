@@ -1,3 +1,14 @@
+interface AuthState {
+  username: string;
+  password: string;
+  passwordConfirm?: string;
+}
+
+interface AuthAction {
+  name: string;
+  value: string;
+}
+
 interface MeType {
   user_id: string;
   username: string;
@@ -58,28 +69,6 @@ interface BillType {
   user_id: string;
   cart_id: string;
   created_at: string;
-}
-
-interface ClosedUserType {
-  id: string;
-  username: string;
-  closed_date: string[] | null;
-  closedId: string;
-  closed: ClosedType;
-  created_at: string;
-}
-
-interface ClosedType {
-  id: string;
-  year: string;
-  month: string;
-  closed_users: ClosedUserType[] | null;
-  created_at: string;
-}
-
-interface ClosedUserState {
-  username: string;
-  closed_date: string[];
 }
 
 interface WeddingType {
