@@ -5,6 +5,7 @@ import loadable from '@loadable/component';
 import { CHECK_ME } from './libs/graphql/auth';
 import { isLogged } from './libs/store/graphql';
 import GlobalStyle from './libs/styles';
+import 'react-toastify/dist/ReactToastify.css';
 
 // Auth Routes
 const LoginPage = loadable(() => import('./pages/auth/LoginPage'));
@@ -17,6 +18,9 @@ const ReservePage = loadable(() => import('./pages/home/ReservePage'));
 const GeneralPage = loadable(() => import('./pages/home/GeneralPage'));
 const ListMenuPage = loadable(() => import('./pages/home/ListMenuPage'));
 const AddCartPage = loadable(() => import('./pages/home/AddCartPage'));
+
+// Cart Route
+const CartPage = loadable(() => import('./pages/cart/CartPage'));
 
 const LoginRoutes = ({ user }: { user: MeType | null }) => {
   if (!user) {
@@ -35,6 +39,7 @@ const LoginRoutes = ({ user }: { user: MeType | null }) => {
           <Route exact path="/password" component={PasswordPage} />
           <Route exact path="/menu" component={ListMenuPage} />
           <Route path="/menu/:menuId" component={AddCartPage} />
+          <Route exact path="/cart" component={CartPage} />
           {user && user.admin && <>AdminRoutes</>}
           <Redirect from="*" to="/soldier" />
         </Switch>

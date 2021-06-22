@@ -4,9 +4,15 @@ interface AuthState {
   passwordConfirm: string;
 }
 
-interface AuthAction {
+interface ActionProps {
   name: string;
   value: string;
+}
+
+interface CartState {
+  title: string;
+  hall: string;
+  etc: string;
 }
 
 interface MeType {

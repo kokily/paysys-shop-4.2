@@ -4,7 +4,7 @@ import { useApolloClient, useMutation } from '@apollo/react-hooks';
 import { toast } from 'react-toastify';
 import { LOGIN, REGISTER } from '../../../libs/graphql/auth';
 
-const reducer = (state: AuthState, action: AuthAction) => {
+const reducer = (state: AuthState, action: ActionProps) => {
   return {
     ...state,
     [action.name]: action.value,

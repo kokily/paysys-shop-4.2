@@ -38,9 +38,9 @@ export const REMOVE_CART = gql`
 `;
 
 // Remove One API
-export const REMOVE_ONE = gql`
-  mutation RemoveOne($item_id: ID!) {
-    RemoveOne(item_id: $item_id) {
+export const REMOVE_CART_ITEM = gql`
+  mutation RemoveCartItem($item_id: ID!) {
+    RemoveCartItem(item_id: $item_id) {
       ok
       error
     }
