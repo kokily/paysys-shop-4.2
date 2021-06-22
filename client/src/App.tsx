@@ -22,6 +22,9 @@ const AddCartPage = loadable(() => import('./pages/home/AddCartPage'));
 // Cart Route
 const CartPage = loadable(() => import('./pages/cart/CartPage'));
 
+// Front Routes
+const ListFrontsPage = loadable(() => import('./pages/fronts/ListFrontsPage'));
+
 const LoginRoutes = ({ user }: { user: MeType | null }) => {
   if (!user) {
     localStorage.removeItem('paysys_token');
@@ -40,6 +43,7 @@ const LoginRoutes = ({ user }: { user: MeType | null }) => {
           <Route exact path="/menu" component={ListMenuPage} />
           <Route path="/menu/:menuId" component={AddCartPage} />
           <Route exact path="/cart" component={CartPage} />
+          <Route exact path="/fronts" component={ListFrontsPage} />
           {user && user.admin && <>AdminRoutes</>}
           <Redirect from="*" to="/soldier" />
         </Switch>
