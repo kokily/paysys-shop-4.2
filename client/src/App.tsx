@@ -16,6 +16,7 @@ const SoldierPage = loadable(() => import('./pages/home/SoldierPage'));
 const ReservePage = loadable(() => import('./pages/home/ReservePage'));
 const GeneralPage = loadable(() => import('./pages/home/GeneralPage'));
 const ListMenuPage = loadable(() => import('./pages/home/ListMenuPage'));
+const AddCartPage = loadable(() => import('./pages/home/AddCartPage'));
 
 const LoginRoutes = ({ user }: { user: MeType | null }) => {
   if (!user) {
@@ -33,6 +34,7 @@ const LoginRoutes = ({ user }: { user: MeType | null }) => {
           <Route exact path="/general" component={GeneralPage} />
           <Route exact path="/password" component={PasswordPage} />
           <Route exact path="/menu" component={ListMenuPage} />
+          <Route path="/menu/:menuId" component={AddCartPage} />
           {user && user.admin && <>AdminRoutes</>}
           <Redirect from="*" to="/soldier" />
         </Switch>
