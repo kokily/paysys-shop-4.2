@@ -38,6 +38,9 @@ const UpdateItemPage = loadable(() => import('./pages/items/UpdateItemPage'));
 const ListUsersPage = loadable(() => import('./pages/users/ListUsersPage'));
 const ReadUserPage = loadable(() => import('./pages/users/ReadUserPage'));
 
+// Wedding Routes
+const ListWeddingsPage = loadable(() => import('./pages/weddings/ListWeddingsPage'));
+
 const LoginRoutes = ({ user }: { user: MeType | null }) => {
   if (!user) {
     localStorage.removeItem('paysys_token');
@@ -68,6 +71,7 @@ const LoginRoutes = ({ user }: { user: MeType | null }) => {
               <Route exact path="/item/update/:itemId" component={UpdateItemPage} />
               <Route exact path="/users" component={ListUsersPage} />
               <Route exact path="/user/:userId" component={ReadUserPage} />
+              <Route exact path="/weddings" component={ListWeddingsPage} />
             </>
           )}
           <Redirect from="*" to="/soldier" />
