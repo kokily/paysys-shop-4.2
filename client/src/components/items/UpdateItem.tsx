@@ -1,12 +1,11 @@
 import React from 'react';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import oc from 'open-color';
 import { shadow } from '../../libs/styles';
 import Input from './common/Input';
 import Select from './common/Select';
 import Button from '../common/Button';
 
-// Styles
 // Styles
 const Container = styled.div`
   position: absolute;

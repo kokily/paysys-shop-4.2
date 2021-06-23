@@ -29,7 +29,7 @@ function useUpdateItem() {
         [name]: value,
       });
     },
-    []
+    [inputs]
   );
 
   const onSubmit = async (e: React.MouseEvent) => {
@@ -69,7 +69,7 @@ function useUpdateItem() {
   };
 
   useEffect(() => {
-    if (data?.ReadItem?.item) {
+    if (data?.ReadItem.item) {
       setInputs({
         name: data.ReadItem.item.name,
         divide: data.ReadItem.item.divide,
@@ -78,7 +78,7 @@ function useUpdateItem() {
         price: data.ReadItem.item.price.toString(),
       });
     }
-  }, [data]);
+  }, [data, setInputs]);
 
   return {
     name,
