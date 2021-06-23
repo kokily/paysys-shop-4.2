@@ -36,6 +36,7 @@ const UpdateItemPage = loadable(() => import('./pages/items/UpdateItemPage'));
 
 // User Routes
 const ListUsersPage = loadable(() => import('./pages/users/ListUsersPage'));
+const ReadUserPage = loadable(() => import('./pages/users/ReadUserPage'));
 
 const LoginRoutes = ({ user }: { user: MeType | null }) => {
   if (!user) {
@@ -66,6 +67,7 @@ const LoginRoutes = ({ user }: { user: MeType | null }) => {
               <Route exact path="/add" component={AddItemPage} />
               <Route exact path="/item/update/:itemId" component={UpdateItemPage} />
               <Route exact path="/users" component={ListUsersPage} />
+              <Route exact path="/user/:userId" component={ReadUserPage} />
             </>
           )}
           <Redirect from="*" to="/soldier" />
