@@ -34,6 +34,9 @@ const ReadItemPage = loadable(() => import('./pages/items/ReadItemPage'));
 const AddItemPage = loadable(() => import('./pages/items/AddItemPage'));
 const UpdateItemPage = loadable(() => import('./pages/items/UpdateItemPage'));
 
+// User Routes
+const ListUsersPage = loadable(() => import('./pages/users/ListUsersPage'));
+
 const LoginRoutes = ({ user }: { user: MeType | null }) => {
   if (!user) {
     localStorage.removeItem('paysys_token');
@@ -62,6 +65,7 @@ const LoginRoutes = ({ user }: { user: MeType | null }) => {
               <Route exact path="/item/:itemId" component={ReadItemPage} />
               <Route exact path="/add" component={AddItemPage} />
               <Route exact path="/item/update/:itemId" component={UpdateItemPage} />
+              <Route exact path="/users" component={ListUsersPage} />
             </>
           )}
           <Redirect from="*" to="/soldier" />
