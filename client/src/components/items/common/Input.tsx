@@ -60,7 +60,7 @@ interface Props {
   value: string;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   label: string;
-  onKeyPress?: (e: React.KeyboardEvent<HTMLInputElement>) => void;
+  onKeyPress?: (e: React.KeyboardEvent<HTMLInputElement> & React.MouseEvent) => void;
 }
 
 const Input: React.FC<Props> = ({ focus, name, value, onChange, label, onKeyPress }) => {

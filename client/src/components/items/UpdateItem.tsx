@@ -1,11 +1,12 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import oc from 'open-color';
 import { shadow } from '../../libs/styles';
-import Button from '../common/Button';
 import Input from './common/Input';
 import Select from './common/Select';
+import Button from '../common/Button';
 
+// Styles
 // Styles
 const Container = styled.div`
   position: absolute;
@@ -58,12 +59,12 @@ interface Props {
   onChange: (
     e: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLSelectElement>
   ) => void;
-  onSubmit: (e: React.MouseEvent) => Promise<void>;
+  onSubmit: (e: React.MouseEvent) => void;
   onBack: () => void;
   onKeyPress: (e: React.KeyboardEvent<HTMLInputElement> & React.MouseEvent) => void;
 }
 
-const AddItem: React.FC<Props> = ({
+const UpdateItem: React.FC<Props> = ({
   name,
   divide,
   native,
@@ -96,7 +97,7 @@ const AddItem: React.FC<Props> = ({
 
   return (
     <Container>
-      <Logo>품목 등록</Logo>
+      <Logo>품목 수정</Logo>
 
       <Form>
         <Input name="name" value={name} onChange={onChange} label="품 명" focus />
@@ -124,4 +125,4 @@ const AddItem: React.FC<Props> = ({
   );
 };
 
-export default AddItem;
+export default UpdateItem;

@@ -32,6 +32,7 @@ const AddReservePage = loadable(() => import('./pages/fronts/AddReservePage'));
 const ListItemsPage = loadable(() => import('./pages/items/ListItemsPage'));
 const ReadItemPage = loadable(() => import('./pages/items/ReadItemPage'));
 const AddItemPage = loadable(() => import('./pages/items/AddItemPage'));
+const UpdateItemPage = loadable(() => import('./pages/items/UpdateItemPage'));
 
 const LoginRoutes = ({ user }: { user: MeType | null }) => {
   if (!user) {
@@ -58,8 +59,9 @@ const LoginRoutes = ({ user }: { user: MeType | null }) => {
             <>
               <Route exact path="/front/update/:frontId" component={AddReservePage} />
               <Route exact path="/items" component={ListItemsPage} />
-              <Route path="/item/:itemId" component={ReadItemPage} />
+              <Route exact path="/item/:itemId" component={ReadItemPage} />
               <Route exact path="/add" component={AddItemPage} />
+              <Route exact path="/item/update/:itemId" component={UpdateItemPage} />
             </>
           )}
           <Redirect from="*" to="/soldier" />
