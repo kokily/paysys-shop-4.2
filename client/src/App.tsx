@@ -6,6 +6,7 @@ import { CHECK_ME } from './libs/graphql/auth';
 import { isLogged } from './libs/store/graphql';
 import GlobalStyle from './libs/styles';
 import 'react-toastify/dist/ReactToastify.css';
+import Loading from './components/common/Loading';
 
 // Auth Routes
 const LoginPage = loadable(() => import('./pages/auth/LoginPage'));
@@ -24,6 +25,7 @@ const CartPage = loadable(() => import('./pages/cart/CartPage'));
 
 // Front Routes
 const ListFrontsPage = loadable(() => import('./pages/fronts/ListFrontsPage'));
+const ReadFrontPage = loadable(() => import('./pages/fronts/ReadFrontPage'));
 
 const LoginRoutes = ({ user }: { user: MeType | null }) => {
   if (!user) {
@@ -44,6 +46,7 @@ const LoginRoutes = ({ user }: { user: MeType | null }) => {
           <Route path="/menu/:menuId" component={AddCartPage} />
           <Route exact path="/cart" component={CartPage} />
           <Route exact path="/fronts" component={ListFrontsPage} />
+          <Route path="/front/:frontId" component={ReadFrontPage} />
           {user && user.admin && <>AdminRoutes</>}
           <Redirect from="*" to="/soldier" />
         </Switch>
@@ -63,7 +66,7 @@ const LogoutRoutes = () => (
 function App() {
   const { data, loading } = useQuery<{ CheckMe: { me: MeType } }>(CHECK_ME);
 
-  if (loading) return <h3>Loading</h3>;
+  if (loading) return <Loading />
 
   return (
     <>

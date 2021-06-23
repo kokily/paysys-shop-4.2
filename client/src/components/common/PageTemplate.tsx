@@ -4,6 +4,7 @@ import { media } from '../../libs/styles';
 import usePageTemplate from './hooks/usePageTemplate';
 import Header from './Header';
 import BottomNav from './BottomNav';
+import Loading from './Loading';
 
 // Styles
 const Main = styled.main`
@@ -21,7 +22,7 @@ interface Props {
 const PageTemplate: React.FC<Props> = ({ children }) => {
   const { user, loading, onLogout } = usePageTemplate();
 
-  if (loading) return null;
+  if (loading) return <Loading />;
 
   return (
     <>
