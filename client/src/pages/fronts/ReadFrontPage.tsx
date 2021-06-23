@@ -1,4 +1,3 @@
-import { BrowserView, MobileView } from 'react-device-detect';
 import Loading from '../../components/common/Loading';
 import PageTemplate from '../../components/common/PageTemplate';
 import ReadFront from '../../components/fronts/ReadFront';
@@ -17,7 +16,7 @@ function ReadFrontPage() {
     meLoading,
     error,
   } = useReadFront();
-  const { modal, onRemoveClick, onCancel, onConfirm } = useReadModal()
+  const { modal, onRemoveClick, onCancel, onConfirm } = useReadModal();
 
   if (loading) return <Loading />;
   if (meLoading) return <Loading />;
@@ -25,20 +24,18 @@ function ReadFrontPage() {
 
   return (
     <PageTemplate>
-      <BrowserView>
-        <ReadFront
-          front={front}
-          user={user}
-          onList={onList}
-          onRestore={onRestore}
-          onReserve={onReserve}
-          onRemoveReserve={onRemoveReserve}
-          modal={modal}
-          onRemoveClick={onRemoveClick}
-          onCancel={onCancel}
-          onConfirm={onConfirm}
-        />
-      </BrowserView>
+      <ReadFront
+        front={front}
+        user={user}
+        onList={onList}
+        onRestore={onRestore}
+        onReserve={onReserve}
+        onRemoveReserve={onRemoveReserve}
+        modal={modal}
+        onRemoveClick={onRemoveClick}
+        onCancel={onCancel}
+        onConfirm={onConfirm}
+      />
     </PageTemplate>
   );
 }

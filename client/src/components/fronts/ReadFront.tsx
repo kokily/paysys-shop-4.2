@@ -1,12 +1,16 @@
 import React from 'react';
 import styled from 'styled-components';
 import oc from 'open-color';
+import { BrowserView, MobileView } from 'react-device-detect';
 import { media } from '../../libs/styles';
 import ReadHeader from './read/ReadHeader';
 import ReadTable from './read/ReadTable';
 import ReadTotal from './read/ReadTotal';
 import ReadButton from './common/ReadButtont';
 import RemoveModal from '../common/RemoveModal';
+import ReadMobileHeader from './mobile/ReadMobileHeader';
+import ReadMobileTable from './mobile/ReadMobileTable';
+import ReadMobileTotal from './mobile/ReadMobileTotal';
 
 // Styles
 const Container = styled.div`
@@ -64,44 +68,67 @@ const ReadFront: React.FC<Props> = ({
   modal,
   onRemoveClick,
   onCancel,
-  onConfirm
+  onConfirm,
 }) => {
-  return <Container>
-    {front && user && (
-      <WhiteBoard>
-        <ReadHeader front={front} />
+  return (
+    <Container>
+      {front && user && (
+        <WhiteBoard>
+          <>
+            <BrowserView>
+              <ReadHeader front={front} />
+            </BrowserView>
+            <MobileView>
+              <ReadMobileHeader front={front} />
+            </MobileView>
+          </>
 
-        <Content>
-          <ReadTable front={front} />
-
-          {front.etc !== '' && front.etc !== ' ' && (
+          <Content>
             <>
-              <hr />
-              <EtcPane>
-                <span>기타사항 : {front.etc}</span>
-              </EtcPane>
+              <BrowserView>
+                <ReadTable front={front} />
+              </BrowserView>
+              <MobileView>
+                <ReadMobileTable front={front} />
+              </MobileView>
             </>
-          )}
 
-          <hr />
+            {front.etc !== '' && front.etc !== ' ' && (
+              <>
+                <hr />
+                <EtcPane>
+                  <span>기타사항 : {front.etc}</span>
+                </EtcPane>
+              </>
+            )}
 
-          <ReadTotal front={front} />
+            <hr />
 
-          <ReadButton
-            front={front}
-            user={user}
-            onRemoveClick={onRemoveClick}
-            onRestore={onRestore}
-            onList={onList}
-            onReserve={onReserve}
-            onRemoveReserve={onRemoveReserve}
-          />
-        </Content>
-      </WhiteBoard>
-    )}
+            <>
+              <BrowserView>
+                <ReadTotal front={front} />
+              </BrowserView>
+              <MobileView>
+                <ReadMobileTotal front={front} />
+              </MobileView>
+            </>
 
-    <RemoveModal visible={modal} onConfirm={onConfirm} onCancel={onCancel} />
-  </Container>;
+            <ReadButton
+              front={front}
+              user={user}
+              onRemoveClick={onRemoveClick}
+              onRestore={onRestore}
+              onList={onList}
+              onReserve={onReserve}
+              onRemoveReserve={onRemoveReserve}
+            />
+          </Content>
+        </WhiteBoard>
+      )}
+
+      <RemoveModal visible={modal} onConfirm={onConfirm} onCancel={onCancel} />
+    </Container>
+  );
 };
 
 export default ReadFront;
