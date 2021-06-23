@@ -7,6 +7,7 @@ import { isLogged } from './libs/store/graphql';
 import GlobalStyle from './libs/styles';
 import 'react-toastify/dist/ReactToastify.css';
 import Loading from './components/common/Loading';
+import ListItemsPage from './pages/items/ListItemsPage';
 
 // Auth Routes
 const LoginPage = loadable(() => import('./pages/auth/LoginPage'));
@@ -52,6 +53,7 @@ const LoginRoutes = ({ user }: { user: MeType | null }) => {
           {user && user.admin && (
             <>
               <Route exact path="/front/update/:frontId" component={AddReservePage} />
+              <Route exact path="/items" component={ListItemsPage} />
             </>
           )}
           <Redirect from="*" to="/soldier" />

@@ -13,7 +13,7 @@ const resolvers: Resolvers = {
         try {
           const query = await getManager()
             .createQueryBuilder(Item, 'item')
-            .limit(20)
+            .limit(30)
             .orderBy('item.num', 'DESC');
 
           if (name) {
