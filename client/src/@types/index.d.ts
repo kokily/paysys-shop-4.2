@@ -15,6 +15,14 @@ interface CartState {
   etc: string;
 }
 
+interface ItemState {
+  name: string;
+  divide: string;
+  native: string;
+  unit: string;
+  price: string;
+}
+
 interface MeType {
   user_id: string;
   username: string;

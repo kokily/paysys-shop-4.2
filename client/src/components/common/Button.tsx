@@ -55,12 +55,22 @@ const Container = styled.button<Props>`
         ${shadow(1)};
       }
     `}
+    ${(props) =>
+    props.fullSize &&
+    css`
+      width: 100%;
+      & + & {
+        margin-left: 0;
+        margin-top: 1rem;
+      }
+    `}
 `;
 
 interface Props {
   cancel?: boolean;
   submit?: boolean;
   edit?: boolean;
+  fullSize?: boolean;
   onClick?: (e: any) => void;
 }
 
