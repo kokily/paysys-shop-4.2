@@ -43,11 +43,24 @@ const Container = styled.button<Props>`
         ${shadow(1)};
       }
     `}
+    ${(props) =>
+    props.edit &&
+    css`
+      border: 1px solid ${oc.yellow[6]};
+      background: white;
+      color: ${oc.yellow[6]};
+      &:hover {
+        background: ${oc.yellow[6]};
+        color: white;
+        ${shadow(1)};
+      }
+    `}
 `;
 
 interface Props {
   cancel?: boolean;
   submit?: boolean;
+  edit?: boolean;
   onClick?: (e: any) => void;
 }
 

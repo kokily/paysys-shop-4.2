@@ -7,7 +7,6 @@ import { isLogged } from './libs/store/graphql';
 import GlobalStyle from './libs/styles';
 import 'react-toastify/dist/ReactToastify.css';
 import Loading from './components/common/Loading';
-import ListItemsPage from './pages/items/ListItemsPage';
 
 // Auth Routes
 const LoginPage = loadable(() => import('./pages/auth/LoginPage'));
@@ -28,6 +27,10 @@ const CartPage = loadable(() => import('./pages/cart/CartPage'));
 const ListFrontsPage = loadable(() => import('./pages/fronts/ListFrontsPage'));
 const ReadFrontPage = loadable(() => import('./pages/fronts/ReadFrontPage'));
 const AddReservePage = loadable(() => import('./pages/fronts/AddReservePage'));
+
+// Item Routes
+const ListItemsPage = loadable(() => import('./pages/items/ListItemsPage'));
+const ReadItemPage = loadable(() => import('./pages/items/ReadItemPage'));
 
 const LoginRoutes = ({ user }: { user: MeType | null }) => {
   if (!user) {
@@ -54,6 +57,7 @@ const LoginRoutes = ({ user }: { user: MeType | null }) => {
             <>
               <Route exact path="/front/update/:frontId" component={AddReservePage} />
               <Route exact path="/items" component={ListItemsPage} />
+              <Route path="/item/:itemId" component={ReadItemPage} />
             </>
           )}
           <Redirect from="*" to="/soldier" />
