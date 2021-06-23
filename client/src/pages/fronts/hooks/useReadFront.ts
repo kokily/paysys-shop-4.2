@@ -13,6 +13,7 @@ function useReadFront() {
     ReadBill: { ok: boolean; bill: BillType | null };
   }>(READ_BILL, {
     variables: { id: frontId },
+    fetchPolicy: 'no-cache',
   });
   const { data: me, loading: meLoading } =
     useQuery<{ CheckMe: { me: MeType | null } }>(CHECK_ME);
@@ -50,7 +51,7 @@ function useReadFront() {
   const onRemoveReserve = async () => {
     try {
       const response = await RemoveReserve({
-        variables: { id: frontId },
+        variables: { bill_id: frontId },
       });
 
       if (!response || !response.data) return;
@@ -58,8 +59,7 @@ function useReadFront() {
       await client.clearStore();
 
       toast.success('예약금 삭제 완료');
-      refetch();
-      history.push(`/front/${frontId}`);
+      await refetch();
     } catch (err) {
       toast.error(err);
     }

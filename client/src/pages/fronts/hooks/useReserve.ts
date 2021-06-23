@@ -1,33 +1,34 @@
 import React, { useCallback, useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 import { toast } from 'react-toastify';
-import { PASSWORD } from '../../../libs/graphql/auth';
+import { ADD_RESERVE } from '../../../libs/graphql/reserve';
 
-function usePassword() {
+function useReserve() {
   const history = useHistory();
-  const [password, setPassword] = useState('');
+  const { frontId }: { frontId: string } = useParams();
+  const [reserve, setReserve] = useState(0);
 
-  const [Password, { client }] = useMutation(PASSWORD);
+  const [AddReserve, { client }] = useMutation(ADD_RESERVE);
 
   const onChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
-    setPassword(e.target.value);
+    setReserve(parseInt(e.target.value));
   }, []);
 
   const onSubmit = async (e: React.MouseEvent) => {
     e.preventDefault();
 
     try {
-      const response = await Password({
-        variables: { password },
+      const response = await AddReserve({
+        variables: { bill_id: frontId, reserve },
       });
 
       if (!response || !response.data) return;
 
       await client.clearStore();
 
-      toast.success('비밀번호 변경 완료');
-      history.push('/soldier');
+      toast.success('예약금 추가 완료');
+      history.goBack();
     } catch (err) {
       toast.error(err);
     }
@@ -40,11 +41,11 @@ function usePassword() {
   };
 
   return {
-    password,
+    reserve,
     onChange,
     onSubmit,
     onKeyPress,
   };
 }
 
-export default usePassword;
+export default useReserve;

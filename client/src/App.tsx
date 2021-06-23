@@ -26,6 +26,7 @@ const CartPage = loadable(() => import('./pages/cart/CartPage'));
 // Front Routes
 const ListFrontsPage = loadable(() => import('./pages/fronts/ListFrontsPage'));
 const ReadFrontPage = loadable(() => import('./pages/fronts/ReadFrontPage'));
+const AddReservePage = loadable(() => import('./pages/fronts/AddReservePage'));
 
 const LoginRoutes = ({ user }: { user: MeType | null }) => {
   if (!user) {
@@ -46,8 +47,13 @@ const LoginRoutes = ({ user }: { user: MeType | null }) => {
           <Route path="/menu/:menuId" component={AddCartPage} />
           <Route exact path="/cart" component={CartPage} />
           <Route exact path="/fronts" component={ListFrontsPage} />
-          <Route path="/front/:frontId" component={ReadFrontPage} />
-          {user && user.admin && <>AdminRoutes</>}
+          <Route exact path="/front/:frontId" component={ReadFrontPage} />
+
+          {user && user.admin && (
+            <>
+              <Route exact path="/front/update/:frontId" component={AddReservePage} />
+            </>
+          )}
           <Redirect from="*" to="/soldier" />
         </Switch>
       )}
@@ -66,7 +72,7 @@ const LogoutRoutes = () => (
 function App() {
   const { data, loading } = useQuery<{ CheckMe: { me: MeType } }>(CHECK_ME);
 
-  if (loading) return <Loading />
+  if (loading) return <Loading />;
 
   return (
     <>
