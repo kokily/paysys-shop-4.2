@@ -208,7 +208,7 @@ interface ReserveType {
   weddingId: string;
 }
 
-interface ExpensiveWeddingType {
+interface ExpenseWeddingType {
   husband_name: string;
   bride_name: string;
   wedding_at: Date;
@@ -223,7 +223,7 @@ interface ExpensiveWeddingType {
   reserve_bride?: string;
 }
 
-interface ExpensiveConventionType {
+interface ExpenseConventionType {
   rental_husband: string;
   rental_bride: string;
   sword_husband: string;
@@ -236,7 +236,7 @@ interface ExpensiveConventionType {
   ceremony_bride: string;
 }
 
-interface ExpensiveCompanyType {
+interface ExpenseCompanyType {
   company_husband: string;
   company_bride: string;
   rooftop_husband: string;
@@ -261,14 +261,14 @@ interface ExpensiveCompanyType {
   etc_bride: string;
 }
 
-interface ExpensiveHanbokType {
+interface ExpenseHanbokType {
   hanbok_pre_husband: string;
   hanbok_pre_bride: string;
   hanbok_post_husband: string;
   hanbok_post_bride: string;
 }
 
-interface ExpensiveEventType {
+interface ExpenseEventType {
   play_husband: string;
   play_bride: string;
   anthem_husband: string;
@@ -279,21 +279,21 @@ interface ExpensiveEventType {
   officiate_bride: string;
 }
 
-interface ExpensiveMealType {
+interface ExpenseMealType {
   meals: string;
   meals_price: string;
   meals_num_husband: string;
   meals_num_bride: string;
 }
 
-interface ExpensivePresentType {
+interface ExpensePresentType {
   present: string;
   present_price: string;
   present_num_husband: string;
   present_num_bride: string;
 }
 
-interface ExpensiveReserveType {
+interface ExpenseReserveType {
   reserve: string;
   reserve_pay: string;
 }
