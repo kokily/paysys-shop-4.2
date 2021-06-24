@@ -44,6 +44,7 @@ const ReadWeddingPage = loadable(() => import('./pages/weddings/ReadWeddingPage'
 
 // Expense Routes
 const ExpensePage = loadable(() => import('./pages/expense/ExpensePage'));
+const UpdateExpensePage = loadable(() => import('./pages/expense/UpdateExpensePage'));
 
 const LoginRoutes = ({ user }: { user: MeType | null }) => {
   if (!user) {
@@ -78,6 +79,11 @@ const LoginRoutes = ({ user }: { user: MeType | null }) => {
               <Route exact path="/weddings" component={ListWeddingsPage} />
               <Route exact path="/wedding/:weddingId" component={ReadWeddingPage} />
               <Route exact path="/expense" component={ExpensePage} />
+              <Route
+                exact
+                path="/wedding/update/:weddingId"
+                component={UpdateExpensePage}
+              />
             </>
           )}
           <Redirect from="*" to="/soldier" />
