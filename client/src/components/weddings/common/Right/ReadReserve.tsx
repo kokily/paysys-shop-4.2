@@ -9,6 +9,9 @@ const ReadReserve: React.FC<Props> = ({ reserve }) => {
   return (
     <>
       <tr>
+        <th colSpan={4}>예약금</th>
+      </tr>
+      <tr>
         <th>구분</th>
         <th className="basic" style={{ background: 'white' }}>
           신랑

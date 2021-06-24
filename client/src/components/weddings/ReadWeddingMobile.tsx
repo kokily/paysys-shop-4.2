@@ -1,12 +1,32 @@
 import React from 'react';
 import SignRemoveModal from './common/sign/SignRemoveModal';
+import SignModal from './common/sign/SignModal';
 
 interface Props {
   wedding: WeddingType | null;
   onRemoveSign: () => void;
+  visibleHusband: boolean;
+  titleHusband: string;
+  onCancelHusband: () => void;
+  onConfirmHusband: () => void;
+  visibleBride: boolean;
+  titleBride: string;
+  onCancelBride: () => void;
+  onConfirmBride: () => void;
 }
 
-const ReadWedding: React.FC<Props> = ({ wedding, onRemoveSign }) => {
+const ReadWeddingMobile: React.FC<Props> = ({
+  wedding,
+  onRemoveSign,
+  visibleHusband,
+  titleHusband,
+  onCancelHusband,
+  onConfirmHusband,
+  visibleBride,
+  titleBride,
+  onCancelBride,
+  onConfirmBride,
+}) => {
   return (
     <>
       {wedding && (
@@ -30,6 +50,19 @@ const ReadWedding: React.FC<Props> = ({ wedding, onRemoveSign }) => {
             {wedding.event_at}
           </h4>
 
+          <SignModal
+            visible={visibleHusband}
+            title={titleHusband}
+            onCancel={onCancelHusband}
+            onConfirm={onConfirmHusband}
+          />
+          <SignModal
+            visible={visibleBride}
+            title={titleBride}
+            onCancel={onCancelBride}
+            onConfirm={onConfirmBride}
+          />
+
           <hr style={{ width: '90%' }} />
 
           <h3>웨딩비용</h3>
@@ -39,4 +72,4 @@ const ReadWedding: React.FC<Props> = ({ wedding, onRemoveSign }) => {
   );
 };
 
-export default ReadWedding;
+export default ReadWeddingMobile;

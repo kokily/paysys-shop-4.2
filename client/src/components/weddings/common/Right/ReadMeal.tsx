@@ -9,6 +9,9 @@ const ReadMeal: React.FC<Props> = ({ meal }) => {
   return (
     <>
       <tr>
+        <th colSpan={4}>식사비용</th>
+      </tr>
+      <tr>
         <th>구분</th>
         <th className="basic" style={{ background: 'white' }}>
           신랑

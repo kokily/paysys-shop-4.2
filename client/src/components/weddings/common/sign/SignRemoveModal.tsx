@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import RemoveModal from '../../common/RemoveModal';
+import RemoveModal from '../../../common/RemoveModal';
 
 // Styles
 const Container = styled.div`
@@ -24,7 +24,7 @@ interface Props {
   onRemoveSign: () => void;
 }
 
-const SignModal: React.FC<Props> = ({ husband, bride, onRemoveSign }) => {
+const SignRemoveModal: React.FC<Props> = ({ husband, bride, onRemoveSign }) => {
   const [remove, setRemove] = useState(false);
 
   const onRemoveClick = () => {
@@ -57,4 +57,4 @@ const SignModal: React.FC<Props> = ({ husband, bride, onRemoveSign }) => {
   );
 };
 
-export default SignModal;
+export default SignRemoveModal;

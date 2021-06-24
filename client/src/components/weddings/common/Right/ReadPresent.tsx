@@ -9,6 +9,9 @@ const ReadPresent: React.FC<Props> = ({ present }) => {
   return (
     <>
       <tr>
+        <th colSpan={4}>답례품 비용</th>
+      </tr>
+      <tr>
         <th>구분</th>
         <th className="basic" style={{ background: 'white' }}>
           신랑

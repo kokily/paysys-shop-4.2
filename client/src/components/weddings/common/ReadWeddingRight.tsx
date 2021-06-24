@@ -67,24 +67,14 @@ const ReadWeddingRight: React.FC<Props> = ({ wedding, meal, present, reserve }) 
       {wedding && (
         <Table>
           <tbody>
-            <tr>
-              <th colSpan={4}>식사비용</th>
-            </tr>
-
             {meal && <ReadMeal meal={meal} />}
 
             <Vacuity />
 
-            <tr>
-              <th colSpan={4}>답례품 비용</th>
-            </tr>
             {present && <ReadPresent present={present} />}
 
             <Vacuity />
 
-            <tr>
-              <th colSpan={4}>예약금</th>
-            </tr>
             {reserve && <ReadReserve reserve={reserve} />}
 
             <Vacuity />
