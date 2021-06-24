@@ -1,5 +1,4 @@
 import React from 'react';
-import TableInput from './TableInput';
 import TableOneInput from './TableOneInput';
 import TableSelect from './TableSelect';
 

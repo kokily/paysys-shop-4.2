@@ -1,9 +1,10 @@
 import Loading from '../../components/common/Loading';
 import PageTemplate from '../../components/common/PageTemplate';
-import Company from '../../components/expense/common/Company';
-import Convention from '../../components/expense/common/Convention';
-import Event from '../../components/expense/common/Event';
 import ExpenseTemplate from '../../components/expense/common/ExpenseTemplate';
+import Expense from '../../components/expense/Expense';
+import Convention from '../../components/expense/common/Convention';
+import Company from '../../components/expense/common/Company';
+import Event from '../../components/expense/common/Event';
 import Hanbok from '../../components/expense/common/Hanbok';
 import Meal from '../../components/expense/common/Meal';
 import Present from '../../components/expense/common/Present';
@@ -94,6 +95,14 @@ function UpdateExpensePage() {
   return (
     <PageTemplate>
       <ExpenseTemplate onBack={onBack} onSubmit={onSubmit} edit>
+        <Expense
+          husband_name={husband_name}
+          bride_name={bride_name}
+          wedding_at={startDate}
+          event_at={event_at}
+          setStartDate={setStartDate}
+          onChange={onChange}
+        />
         <Convention
           rental_husband={rental_husband}
           rental_bride={rental_bride}

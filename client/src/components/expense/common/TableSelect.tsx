@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import { stringAccounting } from '../../../libs/utils';
 
 // Styles
 const StyledSelect = styled.select`

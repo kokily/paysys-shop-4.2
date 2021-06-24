@@ -75,12 +75,6 @@ const Content = styled.div`
   }
 `;
 
-const ButtonBox = styled.div`
-  display: flex;
-  justify-content: center;
-  margin-bottom: 1rem;
-`;
-
 interface Props {
   edit?: boolean;
   onBack: () => void;
