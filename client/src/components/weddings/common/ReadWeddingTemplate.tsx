@@ -60,7 +60,7 @@ const ReadWeddingTemplate: React.FC<Props> = ({
     <Container>
       <Title>웨딩 정산 내역</Title>
 
-      {children}
+      <div>{children}</div>
 
       <ReadWeddingButton
         onList={onList}

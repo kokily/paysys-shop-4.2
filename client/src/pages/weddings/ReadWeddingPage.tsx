@@ -1,6 +1,7 @@
 import Loading from '../../components/common/Loading';
 import PageTemplate from '../../components/common/PageTemplate';
 import ReadWeddingLeft from '../../components/weddings/common/ReadWeddingLeft';
+import ReadWeddingRight from '../../components/weddings/common/ReadWeddingRight';
 import ReadWeddingTemplate from '../../components/weddings/common/ReadWeddingTemplate';
 import ReadWedding from '../../components/weddings/ReadWedding';
 import useReadModal from './hooks/useReadModal';
@@ -22,7 +23,6 @@ function ReadWeddingPage() {
     onUpdate,
     loading,
     error,
-    refetch,
   } = useReadWedding();
   const { modal, onRemoveClick, onCancel, onConfirm } = useReadModal();
 
@@ -47,6 +47,12 @@ function ReadWeddingPage() {
           company={company}
           event={event}
           hanbok={hanbok}
+        />
+        <ReadWeddingRight
+          wedding={wedding}
+          meal={meal}
+          present={present}
+          reserve={reserve}
         />
       </ReadWeddingTemplate>
     </PageTemplate>

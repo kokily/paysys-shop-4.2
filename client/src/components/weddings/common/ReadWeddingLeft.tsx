@@ -2,6 +2,10 @@ import React from 'react';
 import styled from 'styled-components';
 import oc from 'open-color';
 import { stringAccounting } from '../../../libs/utils';
+import ReadConvention from './Left/ReadConvention';
+import ReadCompany from './Left/ReadCompany';
+import ReadEvent from './Left/ReadEvent';
+import ReadHanbok from './Left/ReadHanbok';
 
 // Styles
 const Table = styled.table`
@@ -73,6 +77,11 @@ const ReadWeddingLeft: React.FC<Props> = ({
             <tr>
               <th colSpan={4}>예식비용</th>
             </tr>
+
+            {convention && <ReadConvention convention={convention} />}
+            {company && <ReadCompany company={company} />}
+            {event && <ReadEvent event={event} />}
+            {hanbok && <ReadHanbok hanbok={hanbok} />}
 
             <tr>
               <th style={{ background: 'white', color: '#d941c5' }}>총 예식비용</th>
