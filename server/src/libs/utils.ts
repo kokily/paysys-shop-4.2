@@ -27,3 +27,22 @@ export function cleanAllNullArgs(args: object): object {
 
   return notNull;
 }
+
+export function getSortedCount(array: any[]) {
+  const counts = array.reduce((pv, cv) => {
+    pv[cv] = (pv[cv] || 0) + 1;
+    return pv;
+  }, []);
+
+  const result: any[] = [];
+
+  for (let key in counts) {
+    result.push([key, counts[key]]);
+  }
+
+  result.sort((fst, sec) => {
+    return sec[1] - fst[1];
+  });
+
+  return result;
+}

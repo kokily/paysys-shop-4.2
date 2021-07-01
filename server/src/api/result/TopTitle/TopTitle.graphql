@@ -1,0 +1,14 @@
+type Title {
+  name: String!
+  count: Int!
+}
+
+type TopTitleResponse {
+  ok: Boolean!
+  error: String
+  titles: [Title]
+}
+
+type Query {
+  TopTitle: TopTitleResponse!
+}

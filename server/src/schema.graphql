@@ -11,6 +11,7 @@ type Query {
   ViewCart: ViewCartResponse!
   ListItems(cursor: ID, name: String, divide: String, native: String): ListItemsResponse!
   ReadItem(id: ID!): ReadItemResponse!
+  TopTitle: TopTitleResponse!
   ListUsers(username: String, cursor: ID): ListUsersResponse!
   ReadUser(id: ID!): ReadUserResponse!
   ListWeddings(date: String, cursor: ID): ListWeddingsResponse!
@@ -143,6 +144,17 @@ type RemoveItemResponse {
 type UpdateItemResponse {
   ok: Boolean!
   error: String
+}
+
+type Title {
+  name: String!
+  count: Int!
+}
+
+type TopTitleResponse {
+  ok: Boolean!
+  error: String
+  titles: [Title]
 }
 
 scalar Date
