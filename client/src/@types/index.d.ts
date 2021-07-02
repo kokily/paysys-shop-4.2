@@ -297,3 +297,8 @@ interface ExpenseReserveType {
   reserve: string;
   reserve_pay: string;
 }
+
+interface TopTitleType {
+  name: string;
+  count: number;
+}

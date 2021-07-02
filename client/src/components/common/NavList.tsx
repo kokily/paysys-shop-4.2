@@ -74,6 +74,10 @@ const NavList: React.FC<Props> = ({ user, onClose, onLogout, visible }) => {
                     <Split />
 
                     <NavItem to={'/users'}>사용자 목록</NavItem>
+
+                    <Split />
+
+                    <NavItem to={'/toptitle'}>행사별 현황</NavItem>
                   </>
                 )}
 
