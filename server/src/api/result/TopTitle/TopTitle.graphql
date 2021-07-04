@@ -10,5 +10,8 @@ type TopTitleResponse {
 }
 
 type Query {
-  TopTitle: TopTitleResponse!
+  TopTitle(
+    start_date: Date!
+    end_date: Date!
+  ): TopTitleResponse!
 }

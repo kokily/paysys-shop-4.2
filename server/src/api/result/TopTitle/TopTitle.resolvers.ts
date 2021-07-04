@@ -1,48 +1,43 @@
-import { getManager, getRepository } from 'typeorm';
-import { TopTitleResponse } from '../../../@types';
+import { getManager } from 'typeorm';
+import { TopTitleQueryArgs, TopTitleResponse } from '../../../@types';
 import { Resolvers } from '../../../@types/resolvers';
 import { Bill } from '../../../entities/Bill';
 import { adminResolver } from '../../../libs/authenticate';
-import { getSortedCount } from '../../../libs/utils';
+import { getSortedList } from '../../../libs/utils';
 
 const resolvers: Resolvers = {
   Query: {
-    TopTitle: adminResolver(async (_, __): Promise<TopTitleResponse> => {
-      try {
-        type ValueType = {
-          name: string;
-          count: number;
-        };
+    TopTitle: adminResolver(
+      async (_, args: TopTitleQueryArgs): Promise<TopTitleResponse> => {
+        const { start_date, end_date } = args;
 
-        const list = await getRepository(Bill).find();
+        try {
+          const query = await getManager()
+            .createQueryBuilder(Bill, 'bills')
+            .where('bills.created_at >= :start_date AND bills.created_at <= :end_date', {
+              start_date,
+              end_date,
+            });
 
-        let prevList: string[] = [];
-        let sortData: ValueType[] = [];
+          const list = await query.getMany();
 
-        list.map((bill) => {
-          prevList.push(bill.title);
-        });
+          const sortData = getSortedList(list);
+          const titles = sortData.slice(0, 19);
 
-        const nextList = getSortedCount(prevList);
-
-        sortData = nextList.map((item) => ({
-          name: item[0],
-          count: item[1],
-        }));
-
-        return {
-          ok: true,
-          error: null,
-          titles: sortData.slice(0, 19),
-        };
-      } catch (err) {
-        return {
-          ok: false,
-          error: err.message,
-          titles: null,
-        };
+          return {
+            ok: true,
+            error: null,
+            titles,
+          };
+        } catch (err) {
+          return {
+            ok: false,
+            error: err.message,
+            titles: null,
+          };
+        }
       }
-    }),
+    ),
   },
 };
 

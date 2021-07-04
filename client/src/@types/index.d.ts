@@ -302,3 +302,7 @@ interface TopTitleType {
   name: string;
   count: number;
 }
+
+interface TimeType {
+  date: Date;
+}

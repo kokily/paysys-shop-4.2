@@ -11,7 +11,7 @@ type Query {
   ViewCart: ViewCartResponse!
   ListItems(cursor: ID, name: String, divide: String, native: String): ListItemsResponse!
   ReadItem(id: ID!): ReadItemResponse!
-  TopTitle: TopTitleResponse!
+  TopTitle(start_date: Date!, end_date: Date!): TopTitleResponse!
   ListUsers(username: String, cursor: ID): ListUsersResponse!
   ReadUser(id: ID!): ReadUserResponse!
   ListWeddings(date: String, cursor: ID): ListWeddingsResponse!

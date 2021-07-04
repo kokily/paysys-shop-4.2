@@ -1,3 +1,5 @@
+import { Bill } from '../@types';
+
 export function maskingName(name: string): string {
   if (name.length > 2) {
     let originalName = name.split('');
@@ -45,4 +47,27 @@ export function getSortedCount(array: any[]) {
   });
 
   return result;
+}
+
+type ValueType = {
+  name: string;
+  count: number;
+};
+
+export function getSortedList(list: Bill[]) {
+  let prevList: string[] = [];
+  let sortData: ValueType[] = [];
+
+  list.map((bill) => {
+    prevList.push(bill.title);
+  });
+
+  const nextList = getSortedCount(prevList);
+
+  sortData = nextList.map((item) => ({
+    name: item[0],
+    count: item[1],
+  }));
+
+  return sortData;
 }
