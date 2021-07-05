@@ -18,7 +18,7 @@ const resolvers: Resolvers = {
             .addOrderBy('weddings.id', 'DESC');
 
           if (date) {
-            query.andWhere('weddings.created_at like :date', {
+            query.andWhere('weddings.wedding_at like :date', {
               date: `%${date}%`,
             });
           }

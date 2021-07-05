@@ -2,8 +2,8 @@ import { gql } from '@apollo/client';
 
 // List Weddings API
 export const LIST_WEDDINGS = gql`
-  query ListWeddings($date: String, $cursor: ID) {
-    ListWeddings(date: $date, cursor: $cursor) {
+  query ListWeddings($cursor: ID, $date: String) {
+    ListWeddings(cursor: $cursor, date: $date) {
       ok
       error
       weddings {

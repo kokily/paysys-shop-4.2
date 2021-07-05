@@ -6,7 +6,7 @@ type ListWeddingsResponse {
 
 type Query {
   ListWeddings(
-    date: String
     cursor: ID
+    date: String
   ): ListWeddingsResponse!
 }

@@ -4,12 +4,14 @@ import oc from 'open-color';
 import Time from './common/Time';
 import Chart from './common/Chart';
 import 'react-datepicker/dist/react-datepicker.css';
+import { media } from '../../libs/styles';
 
 // Styles
 const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-bottom: 4rem;
 
   h2 {
     color: ${oc.indigo[7]};
@@ -20,6 +22,10 @@ const Container = styled.div`
 const ChartBox = styled.div`
   width: 100%;
   max-width: 1000px;
+
+  ${media.large} {
+    max-width: 600px;
+  }
 `;
 
 interface Props {

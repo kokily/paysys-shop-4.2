@@ -14,7 +14,7 @@ type Query {
   TopTitle(start_date: Date!, end_date: Date!): TopTitleResponse!
   ListUsers(username: String, cursor: ID): ListUsersResponse!
   ReadUser(id: ID!): ReadUserResponse!
-  ListWeddings(date: String, cursor: ID): ListWeddingsResponse!
+  ListWeddings(cursor: ID, date: String): ListWeddingsResponse!
   ReadWedding(id: ID!): ReadWeddingResponse!
 }
 
