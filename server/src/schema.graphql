@@ -11,6 +11,7 @@ type Query {
   ViewCart: ViewCartResponse!
   ListItems(cursor: ID, name: String, divide: String, native: String): ListItemsResponse!
   ReadItem(id: ID!): ReadItemResponse!
+  ListLaunch: ListLaunchResponse!
   TopTitle(start_date: Date!, end_date: Date!): TopTitleResponse!
   ListUsers(username: String, cursor: ID): ListUsersResponse!
   ReadUser(id: ID!): ReadUserResponse!
@@ -144,6 +145,21 @@ type RemoveItemResponse {
 type UpdateItemResponse {
   ok: Boolean!
   error: String
+}
+
+type Launch {
+  title: String!
+  native: String!
+  name: String!
+  price: Int!
+  count: Int!
+  amount: Int!
+}
+
+type ListLaunchResponse {
+  ok: Boolean!
+  error: String
+  launches: [Launch]
 }
 
 type Title {

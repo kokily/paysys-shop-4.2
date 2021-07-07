@@ -1,0 +1,18 @@
+type Launch {
+  title: String!
+  native: String!
+  name: String!
+  price: Int!
+  count: Int!
+  amount: Int!
+}
+
+type ListLaunchResponse {
+  ok: Boolean!
+  error: String
+  launches: [Launch]
+}
+
+type Query {
+  ListLaunch: ListLaunchResponse!
+}
