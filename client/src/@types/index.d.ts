@@ -306,3 +306,18 @@ interface TopTitleType {
 interface TimeType {
   date: Date;
 }
+
+interface LaunchType {
+  title: string;
+  native: string;
+  name: string;
+  price: number;
+  count: number;
+  amount: number;
+  created_at: string;
+}
+
+interface LaunchMenuType {
+  count: number;
+  amount: number;
+}

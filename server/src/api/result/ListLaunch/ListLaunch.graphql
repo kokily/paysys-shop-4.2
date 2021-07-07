@@ -5,12 +5,21 @@ type Launch {
   price: Int!
   count: Int!
   amount: Int!
+  created_at: Date!
+}
+
+type LaunchMenu {
+  count: Int!
+  amount: Int!
 }
 
 type ListLaunchResponse {
   ok: Boolean!
   error: String
   launches: [Launch]
+  salmon: LaunchMenu!
+  eel: LaunchMenu!
+  flesh: LaunchMenu!
 }
 
 type Query {

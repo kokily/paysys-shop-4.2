@@ -12,3 +12,33 @@ export const TOP_TITLE = gql`
     }
   }
 `;
+
+export const LIST_LAUNCH = gql`
+  query ListLaunch {
+    ListLaunch {
+      ok
+      error
+      launches {
+        title
+        native
+        name
+        price
+        count
+        amount
+        created_at
+      }
+      salmon {
+        count
+        amount
+      }
+      eel {
+        count
+        amount
+      }
+      flesh {
+        count
+        amount
+      }
+    }
+  }
+`;

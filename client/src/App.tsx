@@ -48,6 +48,7 @@ const UpdateExpensePage = loadable(() => import('./pages/expense/UpdateExpensePa
 
 // Result Routes
 const TopTitlePage = loadable(() => import('./pages/result/TopTitlePage'));
+const ListLaunchPage = loadable(() => import('./pages/result/ListLaunchPage'));
 
 const LoginRoutes = ({ user }: { user: MeType | null }) => {
   if (!user) {
@@ -88,6 +89,7 @@ const LoginRoutes = ({ user }: { user: MeType | null }) => {
                 component={UpdateExpensePage}
               />
               <Route exact path="/toptitle" component={TopTitlePage} />
+              <Route exact path="/listlaunch" component={ListLaunchPage} />
             </>
           )}
           <Redirect from="*" to="/soldier" />

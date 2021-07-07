@@ -7,7 +7,7 @@ import { shadow } from '../../libs/styles';
 const Container = styled.button<Props>`
   font-size: 1rem;
   font-weight: bold;
-  width: 80px;
+  width: 90px;
   border-radius: 6px;
   padding: 0.5rem;
   padding-bottom: 0.4rem;
