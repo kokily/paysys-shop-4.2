@@ -37,8 +37,8 @@ function useSignHusband() {
 
       const response = await fetch(
         process.env.NODE_ENV === 'production'
-          ? 'https://paysys.shop/image'
-          : 'http://localhost:4000/image',
+          ? 'https://paysys.shop/upload'
+          : 'http://localhost:4000/upload',
         {
           method: 'POST',
           body: formData,
