@@ -1,6 +1,7 @@
 import React from 'react';
 import SignRemoveModal from './common/sign/SignRemoveModal';
 import SignModal from './common/sign/SignModal';
+import { SetterOrUpdater } from 'recoil';
 
 interface Props {
   wedding: WeddingType | null;
@@ -13,6 +14,8 @@ interface Props {
   titleBride: string;
   onCancelBride: () => void;
   onConfirmBride: () => void;
+  setHusband: SetterOrUpdater<boolean>;
+  setBride: SetterOrUpdater<boolean>;
 }
 
 const ReadWeddingMobile: React.FC<Props> = ({
@@ -26,15 +29,18 @@ const ReadWeddingMobile: React.FC<Props> = ({
   titleBride,
   onCancelBride,
   onConfirmBride,
+  setHusband,
+  setBride,
 }) => {
   return (
     <>
       {wedding && (
         <>
           <h3 className="name">
-            신랑님: <strong>{wedding.husband_name}</strong>{' '}
+            신랑님:{' '}
+            <strong onClick={() => setHusband(true)}>{wedding.husband_name}</strong>{' '}
             <strong style={{ color: 'pink' }}>♡</strong> 신부님:{' '}
-            <strong>{wedding.bride_name}</strong>
+            <strong onClick={() => setBride(true)}>{wedding.bride_name}</strong>
           </h3>
 
           {(wedding.husband_image || wedding.bride_image) && (

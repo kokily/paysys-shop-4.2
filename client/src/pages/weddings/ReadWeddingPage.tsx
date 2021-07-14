@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { useRecoilValue } from 'recoil';
+import { useRecoilState } from 'recoil';
 import { BrowserView, MobileView } from 'react-device-detect';
 import { brideSign, husbandSign } from '../../libs/store/recoil';
 import useReadModal from './hooks/useReadModal';
@@ -39,8 +39,8 @@ function ReadWeddingPage() {
   const { visibleHusband, titleHusband, onCancelHusband, onConfirmHusband } =
     useSignHusband();
   const { visibleBride, titleBride, onCancelBride, onConfirmBride } = useSignBride();
-  const husband = useRecoilValue(husbandSign);
-  const bride = useRecoilValue(brideSign);
+  const [husband, setHusband] = useRecoilState(husbandSign);
+  const [bride, setBride] = useRecoilState(brideSign);
 
   useEffect(() => {
     refetch();
@@ -98,6 +98,8 @@ function ReadWeddingPage() {
             titleBride={titleBride}
             onCancelBride={onCancelBride}
             onConfirmBride={onConfirmBride}
+            setHusband={setHusband}
+            setBride={setBride}
           />
           <ReadWeddingMobileTop
             wedding={wedding}
