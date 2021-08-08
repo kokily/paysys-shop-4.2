@@ -52,6 +52,10 @@ const Table = styled.table`
       font-weight: bold;
     }
   }
+
+  h3 {
+    margin: 0.96rem;
+  }
 `;
 
 interface Props {
@@ -110,8 +114,6 @@ const ReadWeddingRight: React.FC<Props> = ({
       hanbok.hanbok_pre_bride;
   }
 
-  
-
   return (
     <>
       {wedding && (
@@ -119,13 +121,11 @@ const ReadWeddingRight: React.FC<Props> = ({
           <tbody>
             {meal && <ReadMeal meal={meal} />}
 
-            <Vacuity />
-
             {present && <ReadPresent present={present} />}
 
             <Vacuity />
 
-            {reserve && <ReadReserve reserve={reserve} />}
+            {reserve && hanbok && <ReadReserve reserve={reserve} hanbok={hanbok} />}
 
             <Vacuity />
 

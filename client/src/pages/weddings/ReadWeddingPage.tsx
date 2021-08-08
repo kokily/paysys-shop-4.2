@@ -114,6 +114,7 @@ function ReadWeddingPage() {
             meal={meal}
             present={present}
             reserve={reserve}
+            hanbok={hanbok}
           />
         </ReadWeddingMobileTemplate>
       </MobileView>

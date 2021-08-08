@@ -3,9 +3,10 @@ import { stringAccounting } from '../../../../libs/utils';
 
 interface Props {
   reserve: ReserveType;
+  hanbok: HanbokType;
 }
 
-const ReadReserve: React.FC<Props> = ({ reserve }) => {
+const ReadReserve: React.FC<Props> = ({ reserve, hanbok }) => {
   return (
     <>
       <tr>
@@ -67,6 +68,19 @@ const ReadReserve: React.FC<Props> = ({ reserve }) => {
           -{stringAccounting(reserve.reserve_pay)}원
         </td>
       </tr>
+
+      {(hanbok.hanbok_pre_husband || hanbok.hanbok_pre_bride) && (
+        <tr>
+          <th>한복(선불)</th>
+          <td style={{ color: 'red' }}>
+            -{stringAccounting(hanbok.hanbok_pre_husband)}원
+          </td>
+          <td style={{ color: 'red' }}>-{stringAccounting(hanbok.hanbok_pre_bride)}원</td>
+          <td className="sub" style={{ color: 'red' }}>
+            -{stringAccounting(hanbok.hanbok_pre_husband + hanbok.hanbok_pre_bride)}원
+          </td>
+        </tr>
+      )}
     </>
   );
 };
