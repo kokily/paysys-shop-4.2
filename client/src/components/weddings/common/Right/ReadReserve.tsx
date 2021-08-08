@@ -70,7 +70,7 @@ const ReadReserve: React.FC<Props> = ({ reserve, hanbok }) => {
         </td>
       </tr>
 
-      {hanbok.hanbok_pre_husband !== 0 && hanbok.hanbok_pre_bride !== 0 ? (
+      {hanbok.hanbok_pre_husband !== 0 || hanbok.hanbok_pre_bride !== 0 ? (
         <tr>
           <th>한복(선불)</th>
           <td style={{ color: 'red' }}>
