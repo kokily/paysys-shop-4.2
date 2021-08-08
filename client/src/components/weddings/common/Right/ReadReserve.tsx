@@ -1,5 +1,6 @@
 import React from 'react';
 import { stringAccounting } from '../../../../libs/utils';
+import Vacuity from '../Vacuty';
 
 interface Props {
   reserve: ReserveType;
@@ -69,7 +70,7 @@ const ReadReserve: React.FC<Props> = ({ reserve, hanbok }) => {
         </td>
       </tr>
 
-      {(hanbok.hanbok_pre_husband || hanbok.hanbok_pre_bride) && (
+      {hanbok.hanbok_pre_husband !== 0 && hanbok.hanbok_pre_bride !== 0 ? (
         <tr>
           <th>한복(선불)</th>
           <td style={{ color: 'red' }}>
@@ -80,6 +81,8 @@ const ReadReserve: React.FC<Props> = ({ reserve, hanbok }) => {
             -{stringAccounting(hanbok.hanbok_pre_husband + hanbok.hanbok_pre_bride)}원
           </td>
         </tr>
+      ) : (
+        <Vacuity />
       )}
     </>
   );
