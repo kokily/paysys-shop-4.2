@@ -59,9 +59,59 @@ interface Props {
   meal: MealType | null;
   present: PresentType | null;
   reserve: ReserveType | null;
+  hanbok: HanbokType | null;
 }
 
-const ReadWeddingRight: React.FC<Props> = ({ wedding, meal, present, reserve }) => {
+const ReadWeddingRight: React.FC<Props> = ({
+  wedding,
+  meal,
+  present,
+  reserve,
+  hanbok,
+}) => {
+  let allCost = 0;
+  let payment = 0;
+  let husbandCost = 0;
+  let brideCost = 0;
+
+  if (wedding && meal && present && hanbok) {
+    allCost =
+      wedding.cost_husband +
+      wedding.cost_bride +
+      wedding.meal_husband +
+      wedding.meal_bride +
+      wedding.present_husband +
+      wedding.present_bride;
+
+    payment =
+      wedding.cost_husband +
+      wedding.cost_bride +
+      wedding.meal_husband +
+      wedding.meal_bride +
+      wedding.present_husband +
+      wedding.present_bride -
+      wedding.reserve_husband -
+      wedding.reserve_bride -
+      hanbok.hanbok_pre_husband -
+      hanbok.hanbok_pre_bride;
+
+    husbandCost =
+      wedding.cost_husband +
+      wedding.meal_husband +
+      wedding.present_husband -
+      wedding.reserve_husband -
+      hanbok.hanbok_pre_husband;
+
+    brideCost =
+      wedding.cost_bride +
+      wedding.meal_bride +
+      wedding.present_bride -
+      wedding.reserve_bride -
+      hanbok.hanbok_pre_bride;
+  }
+
+  
+
   return (
     <>
       {wedding && (
@@ -82,51 +132,13 @@ const ReadWeddingRight: React.FC<Props> = ({ wedding, meal, present, reserve }) 
             <tr>
               <td colSpan={4} rowSpan={9} style={{ textAlign: 'center' }}>
                 <h3 style={{ color: 'silver' }}>
-                  웨딩 총 비용:{' '}
-                  {stringAccounting(
-                    wedding.cost_husband +
-                      wedding.cost_bride +
-                      wedding.meal_husband +
-                      wedding.meal_bride +
-                      wedding.present_husband +
-                      wedding.present_bride
-                  )}
-                  원
+                  웨딩 총 비용: {stringAccounting(allCost)}원
                 </h3>
                 <h3 style={{ color: 'blue' }}>
-                  결제 총 비용:{' '}
-                  {stringAccounting(
-                    wedding.cost_husband +
-                      wedding.cost_bride +
-                      wedding.meal_husband +
-                      wedding.meal_bride +
-                      wedding.present_husband +
-                      wedding.present_bride -
-                      wedding.reserve_husband -
-                      wedding.reserve_bride
-                  )}
-                  원
+                  결제 총 비용: {stringAccounting(payment)}원
                 </h3>
-                <h3>
-                  신랑 총 결제비용:{' '}
-                  {stringAccounting(
-                    wedding.cost_husband +
-                      wedding.meal_husband +
-                      wedding.present_husband -
-                      wedding.reserve_husband
-                  )}
-                  원
-                </h3>
-                <h3>
-                  신부 총 결제비용:{' '}
-                  {stringAccounting(
-                    wedding.cost_bride +
-                      wedding.meal_bride +
-                      wedding.present_bride -
-                      wedding.reserve_bride
-                  )}
-                  원
-                </h3>
+                <h3>신랑 총 결제비용: {stringAccounting(husbandCost)}원</h3>
+                <h3>신부 총 결제비용: {stringAccounting(brideCost)}원</h3>
               </td>
             </tr>
           </tbody>
