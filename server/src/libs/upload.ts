@@ -16,7 +16,7 @@ const s3 = new aws.S3({
   apiVersion: '2006-03-01',
 });
 
-const Bucket = 'image.paysys.shop';
+const Bucket = 'image.paysys.kr';
 
 interface FileType {
   name: string;

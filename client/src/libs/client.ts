@@ -30,7 +30,7 @@ const authMiddleware = new ApolloLink((operation: Operation, forward: any) => {
 const httpLink = new HttpLink({
   uri:
     process.env.NODE_ENV === 'production'
-      ? 'https://paysys.shop/graphql'
+      ? 'https://paysys.kr/graphql'
       : 'http://localhost:4000/graphql',
 });
 
