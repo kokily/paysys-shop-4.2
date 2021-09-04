@@ -37,7 +37,7 @@ function useSignBride() {
 
       const response = await fetch(
         process.env.NODE_ENV === 'production'
-          ? 'https://paysys.shop/upload'
+          ? 'https://paysys.kr/upload'
           : 'http://localhost:4000/upload',
         {
           method: 'POST',
@@ -52,14 +52,14 @@ function useSignBride() {
 
       const data = await response.json();
 
-      setBrideImg(`https://image.paysys.shop/${data.key}`);
+      setBrideImg(`https://image.paysys.kr/${data.key}`);
       setCurrentImg('');
 
       const response2 = await AddSign({
         variables: {
           weddingId,
           sex: 'bride',
-          image: `https://image.paysys.shop/${data.key}`,
+          image: `https://image.paysys.kr/${data.key}`,
         },
       });
 
