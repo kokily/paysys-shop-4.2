@@ -51,7 +51,7 @@ const resolvers: Resolvers = {
             error: null,
             users,
           };
-        } catch (err) {
+        } catch (err: any) {
           return {
             ok: false,
             error: err.message,

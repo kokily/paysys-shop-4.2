@@ -35,7 +35,7 @@ const resolvers: Resolvers = {
               error: '예약금이 없습니다.',
             };
           }
-        } catch (err) {
+        } catch (err: any) {
           return {
             ok: false,
             error: err.message,

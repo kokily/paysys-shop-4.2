@@ -65,7 +65,7 @@ const resolvers: Resolvers = {
               error: null,
             };
           }
-        } catch (err) {
+        } catch (err: any) {
           return {
             ok: false,
             error: err.message,

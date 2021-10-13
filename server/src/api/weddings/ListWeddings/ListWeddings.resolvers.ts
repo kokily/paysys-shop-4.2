@@ -53,7 +53,7 @@ const resolvers: Resolvers = {
             error: null,
             weddings,
           };
-        } catch (err) {
+        } catch (err: any) {
           return {
             ok: false,
             error: err.message,

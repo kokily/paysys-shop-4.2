@@ -62,7 +62,7 @@ const resolvers: Resolvers = {
           const sender = process.env.ALIGO_SENDER;
           const receiver =
             process.env.NODE_ENV === 'production'
-              ? `${process.env.ALIGO_RECEIVER1},${process.env.ALIGO_RECEIVER2},${process.env.ALIGO_RECEIVER3},${process.env.ALIGO_RECEIVER4}`
+              ? `${process.env.ALIGO_RECEIVER1},${process.env.ALIGO_RECEIVER2},${process.env.ALIGO_RECEIVER3}`
               : `${process.env.ALIGO_RECEIVER1}`;
 
           ctx.request.body = {
@@ -80,7 +80,7 @@ const resolvers: Resolvers = {
             ok: true,
             error: null,
           };
-        } catch (err) {
+        } catch (err: any) {
           return {
             ok: false,
             error: err.message,

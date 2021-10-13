@@ -56,7 +56,7 @@ const resolvers: Resolvers = {
               error: '수정 권한이 없습니다.',
             };
           }
-        } catch (err) {
+        } catch (err: any) {
           return {
             ok: false,
             error: err.message,

@@ -29,7 +29,7 @@ const resolvers: Resolvers = {
             error: null,
             titles,
           };
-        } catch (err) {
+        } catch (err: any) {
           return {
             ok: false,
             error: err.message,

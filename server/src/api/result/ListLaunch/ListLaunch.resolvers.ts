@@ -70,7 +70,7 @@ const resolvers: Resolvers = {
           eel,
           flesh,
         };
-      } catch (err) {
+      } catch (err: any) {
         return {
           ok: false,
           error: err.message,

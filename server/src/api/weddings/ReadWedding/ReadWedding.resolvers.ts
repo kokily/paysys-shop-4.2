@@ -77,7 +77,7 @@ const resolvers: Resolvers = {
             present,
             reserve,
           };
-        } catch (err) {
+        } catch (err: any) {
           return {
             ok: false,
             error: err.message,
