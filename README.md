@@ -1,7 +1,7 @@
-![version](https://img.shields.io/github/package-json/v/kokily/paysys-shop)
-![License MIT](https://img.shields.io/github/license/kokily/paysys-shop?style=plat)
+![version](https://img.shields.io/github/package-json/v/kokily/paysys-shop-4.2)
+![License MIT](https://img.shields.io/github/license/kokily/paysys-shop-4.2?style=plat)
 
-![Repo size](https://img.shields.io/github/repo-size/kokily/paysys-shop)
+![Repo size](https://img.shields.io/github/repo-size/kokily/paysys-shop-4.2)
 
 ---
 
